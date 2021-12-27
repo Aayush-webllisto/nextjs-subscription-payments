@@ -20,6 +20,8 @@ export default function Layout({ children, meta: pageMeta }: Props) {
     ...pageMeta
   };
 
+  console.log('get stripe',meta)
+  
   return (
     <>
       <Head>
