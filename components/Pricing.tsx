@@ -38,6 +38,8 @@ export default function Pricing({ products }: Props) {
         token: session.access_token
       });
       
+      debugger;
+      
       console.log('get sessionID',sessionId)
 
       const stripe = await getStripe();
