@@ -43,12 +43,17 @@ export default function Account() {
         url: '/api/create-portal-link',
         token: session.access_token
       });
+      
+      console.log('get account-url',url)
+      console.log('get account-error',error)
+      
       window.location.assign(url);
     } catch (error) {
       if (error) return alert((error as Error).message);
     }
     setLoading(false);
   };
+  
 
   const subscriptionName = subscription && subscription?.prices?.products?.[0]?.name;
   const subscriptionPrice =
