@@ -7,6 +7,8 @@ interface Props {
   products: Product[];
 }
 
+console.log('egt product 1',products)
+
 export default function PricingPage({ products }: Props) {
   return <Pricing products={products} />;
 }
@@ -14,6 +16,7 @@ export default function PricingPage({ products }: Props) {
 export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
   const products = await getActiveProductsWithPrices();
 
+console.log('egt product 2',products)
   return {
     props: {
       products
