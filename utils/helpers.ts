@@ -11,7 +11,9 @@ export const getURL = () => {
 };
 
 export const postData = async ({ url, token, data }: { url: string; data?: { price: Price }; token: string }) => {
-  console.log('posting,', url, token, data);
+  console.log('url,', url);
+  console.log('token,', token);
+  console.log('data,', data);
 
   const res: Response = await fetch(url, {
     method: 'POST',
@@ -19,6 +21,8 @@ export const postData = async ({ url, token, data }: { url: string; data?: { pri
     credentials: 'same-origin',
     body: JSON.stringify(data)
   });
+  
+  console.log('response,', res);
 
   if (!res.ok) {
     console.log('Error in postData', { url, token, data, res });
