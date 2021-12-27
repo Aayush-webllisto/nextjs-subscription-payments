@@ -37,6 +37,8 @@ export default function Pricing({ products }: Props) {
         data: { price },
         token: session.access_token
       });
+      
+      console.log('get sessionID',sessionId)
 
       const stripe = await getStripe();
       stripe?.redirectToCheckout({ sessionId });
