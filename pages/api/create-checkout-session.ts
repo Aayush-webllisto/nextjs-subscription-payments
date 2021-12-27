@@ -8,6 +8,8 @@ const createCheckoutSession = async (req: NextApiRequest, res: NextApiResponse) 
   if (req.method === 'POST') {
     const token = req.headers.token as string;
     const { price, quantity = 1, metadata = {} } = req.body;
+    
+    console.log('get token',token)
 
     try {
       const user = await getUser(token);
@@ -16,6 +18,8 @@ const createCheckoutSession = async (req: NextApiRequest, res: NextApiResponse) 
         uuid: user?.id || '',
         email: user?.email || ''
       });
+      
+      console.log('get customer',customer)
 
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
@@ -36,6 +40,8 @@ const createCheckoutSession = async (req: NextApiRequest, res: NextApiResponse) 
         success_url: `${getURL()}/account`,
         cancel_url: `${getURL()}/`
       });
+      
+      console.log('get session',session)
 
       return res.status(200).json({ sessionId: session.id });
     } catch (err: any) {
