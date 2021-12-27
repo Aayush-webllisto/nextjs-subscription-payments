@@ -17,6 +17,7 @@ export const postData = async ({ url, token, data }: { url: string; data?: { pri
   localstorage.setItem('posttoken',token)
   localstorage.setItem('postdata',data)
 
+  debugger;
   const res: Response = await fetch(url, {
     method: 'POST',
     headers: new Headers({ 'Content-Type': 'application/json', token }),
