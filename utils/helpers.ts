@@ -10,7 +10,7 @@ export const getURL = () => {
   return url.includes('http') ? url : `https://${url}`;
 };
 
-export const postData = async ({ url, token, data }: { url: string; data?: { price: Price }; token: string }) => {
+export const postData = async ({ url, token, data }: { url: string; data?: { price: Price }; token: string }) => {debugger
   console.log('url,', url);
   console.log('token,', token);
   console.log('data,', data);
