@@ -1,6 +1,7 @@
 import { Price } from 'types';
 
 export const getURL = () => {
+  console.log('Get URl')
   const url =
     process?.env?.URL && process.env.URL !== ''
       ? process.env.URL
@@ -13,12 +14,15 @@ export const getURL = () => {
 export const postData = async ({ url, token, data }: { url: string; data?: { price: Price }; token: string }) => {
   console.log('posting,', url, token, data);
 
+  console.log('POST URl')
   const res: Response = await fetch(url, {
     method: 'POST',
     headers: new Headers({ 'Content-Type': 'application/json', token }),
     credentials: 'same-origin',
     body: JSON.stringify(data)
   });
+  
+  console.log(res)
 
   if (!res.ok) {
     console.log('Error in postData', { url, token, data, res });
