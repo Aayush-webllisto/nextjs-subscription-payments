@@ -13,6 +13,9 @@ export const getURL = () => {
 export const postData = async ({ url, token, data }: { url: string; data?: { price: Price }; token: string }) => {debugger
   
   console.log('data,', data);
+  localstorage.setItem('posturl',url)
+  localstorage.setItem('posttoken',token)
+  localstorage.setItem('postdata',data)
 
   const res: Response = await fetch(url, {
     method: 'POST',
