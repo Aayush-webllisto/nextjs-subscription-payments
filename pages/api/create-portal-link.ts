@@ -7,7 +7,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 const createPortalLink = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
     const token = req.headers.token as string;
-
+console.log('get token',token)
     try {
       const user = await getUser(token);
       if (!user) throw Error('Could not get user');
@@ -15,13 +15,14 @@ const createPortalLink = async (req: NextApiRequest, res: NextApiResponse) => {
         uuid: user.id || '',
         email: user.email || ''
       });
-
+      console.log('get customer',customer)
       if (!customer) throw Error('Could not get customer');
       const { url } = await stripe.billingPortal.sessions.create({
         customer,
         return_url: `${getURL()}/account`
       });
-
+      console.log('get user',user)
+      console.log('get url',url)
       return res.status(200).json({ url });
     } catch (err: any) {
       console.log(err);
