@@ -34,6 +34,8 @@ const relevantEvents = new Set([
   'customer.subscription.deleted'
 ]);
 
+console.log('get event',relevantEvents)
+
 const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
     const buf = await buffer(req);
@@ -101,5 +103,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     res.status(405).end('Method Not Allowed');
   }
 };
+
+console.log('get webhook',webhookHandler)
 
 export default webhookHandler;
